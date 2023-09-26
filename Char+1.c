@@ -6,14 +6,14 @@ visualizza il carattere successivo a quello inserito ('a' ->'b', 'b'
 -> 'c', ..., 'z' -> 'a').
 */
 #include<stdio.h>
-#define OFFSET 1
+#define PASSO 1
+#define LUNGHEZZA_ALFABETO ('z'-'a'+1)
 
 int main()
 {
-    char n, nOffset;
-    scanf("%c", n);
-    n = n-'a';
-    nOffset = (n+1)%(('z'-'a')+1);
-    printf("%c", nOffset);
+    char car, carNuovo;
+    scanf("%c", &car);
+    carNuovo = (car - 'a' + PASSO) % LUNGHEZZA_ALFABETO + 'a';
+    printf("%c", carNuovo);
     return 0;
 }
