@@ -7,14 +7,11 @@ int main(){
     int riga, colonna, n;
     
     riga = INIZIO;
-    while(riga <= FINE){
-        colonna = INIZIO;
-        while(colonna <= FINE){
+    for(riga=INIZIO; riga<= FINE; riga++){
+        for(colonna = INIZIO ;colonna <= FINE; colonna++){
             n = colonna*riga;
-            printf("%d ", n);
-            colonna = colonna + 1;
+            printf("%3d ", n);
         }
         printf("\n");
-        riga = riga + 1;
     }
 }
