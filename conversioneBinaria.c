@@ -13,7 +13,7 @@ int main(){
         cifra = num% BASE2;
         num /= BASE2;
         ris = ris + cifra*pot10;
-        pot10 *=BASE10
+        pot10 *= BASE10
 
     }while(num>0);
 
