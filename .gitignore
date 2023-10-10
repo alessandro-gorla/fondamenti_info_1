@@ -4,3 +4,7 @@
 !*.c
 #file compilazione C
 *.out
+#permetti .md
+!*.md
+#vs code
+*.vscode
