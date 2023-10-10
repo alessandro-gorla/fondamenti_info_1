@@ -23,7 +23,7 @@ il programma visualizza il seguente messaggio:
 #define DIM 10
 
 int main(){
-    int h[DIM], i, j, num;
+    int h[DIM], i, j, num, max;
     
     /*inizializzazione dell'array a 0*/
     for(i=0; i<DIM; i++){
@@ -35,6 +35,8 @@ int main(){
         h[num]++;
         scanf("%d", &num);
     }
+
+/*Stampa Barre Orizzontali*/
 /*
     for(i=0; i<DIM; i++){
         printf("%d ", i);
@@ -45,18 +47,28 @@ int main(){
     }
 */
 
-    for(i=0; i<DIM; i++){ 
-        printf("i");
+    /*Stampa barre Verticali*/
+    max = h[0];
+    for(i=1; i<DIM; i++){
+        if(max < h[i]){
+            max = h[i];
+        }
     }
 
-    for(i=0, j=0; i<DIM; i++){
-        printf("%d ", i);
-        for(j=0; j<h[i]; j++){
-            printf("* ");
+    for(i=0; i<DIM; i++){ 
+        printf("%d", i);
+    }
+    printf("\n");
+    for(i=0; i<max; i++){
+        for(j=0; j<DIM; j++){
+            if(h[i]<h[i]){
+                printf("*");
+            }else{
+                printf(" ");
+            } 
         }
         printf("\n");
     }
-
 
     return 0;
 }
