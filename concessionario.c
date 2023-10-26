@@ -35,14 +35,14 @@ NESSUNA
 #define MAX_NOME_COGNOME 30 
 
 typedef struct{
-    char nome[MAX_NOME_COGNOME];
-    char cognome[MAX_NOME_COGNOME];
-    char piva[DIM_PIVA];
+    char nome[MAX_NOME_COGNOME+1];
+    char cognome[MAX_NOME_COGNOME+1];
+    char piva[DIM_PIVA]+1;
 }t_gestore;
 
 typedef struct{
-    char modello[DIM_MODELLO_AUTO];
-    char targa[DIM_TARGA];
+    char modello[DIM_MODELLO_AUTO+1];
+    char targa[DIM_TARGA+1];
     int mese;
     int anno;
 }t_automebile;
@@ -64,11 +64,11 @@ int main(){
     for(i=0; i<DIM_GRUPPO_CONCES; i++){
         /*Inserimento Gestore*/
         scanf("Codice concessionario: %d", &gruppo_concessionari[i].codice);
-        scanf("Nome Gestore: %f", &gruppo_concessionari[i].t_gestore.nome)
-        scanf("Cognome Gestore: %f", &gruppo_concessionari[i].t_gestore.cognome)
+        scanf("Nome Gestore: %[^\n]", gruppo_concessionari[i].t_gestore.nome)
+        scanf("Cognome Gestore: %[^\n]", &gruppo_concessionari[i].t_gestore.cognome)
         scanf("Partita Iva Gestore: %f", &gruppo_concessionari[i].t_gestore.piva)
         
-        gruppo_concessionari[i].grandezza_garage = 10;
+        gruppo_concessionari[i].grandezza_garage = 10; /*dato critico devo verificare che il numero inserito dall'utente deve essere minore di MAX_GARAGE*/
         /*Inserimento Automobili*/
         for(j=0; j<gruppo_concessionari[i].grandezza_garage; j++){
              scanf("Modello Auto: %f", &gruppo_concessionari[i].garge[j].modello);
@@ -81,16 +81,20 @@ int main(){
     /*Ricerca Automobili Per Anno*/
     scanf("Anno Ricerca: %d", &anno_ricerca);
     for(i=0; i<DIM_GRUPPO_CONCES; i++){
+        /*Visualizza interfaccia*/
         printf("Conc. %d, codice %d: gestore %f %f\n", i, gruppo_concessionari[i].codice, gruppo_concessionari[i].t_gestore.nome, gruppo_concessionari[i].t_gestore.cognome);
         printf("Immatricolazioni %d:\n", anno_ricerca);
         for(j=0, trovato=0; j<gruppo_concessionari[i].grandezza_garage; j++){
             if(gruppo_concessionari[i].garge[j].anno == anno_ricerca){
                 trovato = 1;
-            }
+                printf("* Mese: %d: %s, %s\n", gruppo_concessionari[i].garge[j].mese, gruppo_concessionari[i].garge[j].modello, gruppo_concessionari[i].garge[j].targa);
+            } 
         }
+        if(!trovato){
+            printf("NESSUNA");
+        }
+        printf("\n");
     }
 
-    
-
-    retrun 0;
+    return 0;
 }
