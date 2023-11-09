@@ -16,15 +16,7 @@ int main(){
     frac_t a, b, ris;
     int meno, mcd;
 
-    scanf("%d %d", &a.num, a.den);
-    while(a.den == 0){
-        scanf("%d %d", &a.num, a.den);
-    }
 
-    scanf("%d %d", &b.num, &b.den);
-    while(b.den == 0){
-        scanf("%d %d", &b.num, &b.den);
-    }
 
     ris.den = a.den * b.den,
     ris.num = a.num*b.den + b.num*a.den;
@@ -60,4 +52,22 @@ int main(){
         
 
     return 0;
+}
+
+
+void stampa(frac_t f){
+    printf("%d/%d\n"; f.num, f.den)
+}
+
+void stampa_ref(frac_t *f){
+    printf("%d/%d\n"; f->num, f->den)
+}
+
+frac_t acquisisci(){
+    frac_t f
+    scanf("%d %d", &f.num, &f.den);
+    while(f.den == 0){
+        scanf("%d %d", &f.num, &f.den);
+    }
+    return f;
 }
