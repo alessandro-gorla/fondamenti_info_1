@@ -31,6 +31,8 @@ programma visualizza un messaggio di errore e ritorna dal menù.
 #define MAXL 50
 
 #define APPENDI 1
+#define INSERISCI 2
+#define CANCELLA 3
 #define VISUALIZZA 4
 #define CERCA 5
 #define USCITA 8
@@ -46,6 +48,8 @@ typedef struct {
 } percorso_t;
 
 void visualizza(percorso_t*);
+void inserisci(percorso_t*);
+void cancella(percorso_t*);
 void appendi(percorso_t*);
 void cerca(percorso_t*);
 
@@ -55,19 +59,24 @@ int main(){
 
   p.n_loc = 0;
 
+  /*Stampa Menù*/
   do{
     printf("\nMENU:\n%d - Inserisci in coda\n"
-           "%d - Visualizza percorso\n%d - Cerca località\n%d - Esci\n"
+           "%d - Visualizza percorso\n%d - Inserisci\n%d -Cancella\n%d - Cerca località\n%d - Esci\n"
            "Cosa vuoi fare?\n",
-           APPENDI, VISUALIZZA, CERCA, USCITA);
+           APPENDI, INSERISCI, CANCELLA, VISUALIZZA, CERCA, USCITA);
     scanf("%d", &scelta);
     if(scelta == APPENDI){
       appendi(&p);
-    } else if(scelta == VISUALIZZA){
+    } else if(scelta == INSERISCI){
+      inserisci(&p);
+    } else if(scelta == CANCELLA) {
+      cancella(&p);
+    } else if(scelta == VISUALIZZA) {
       visualizza(&p);
-    } else if(scelta == CERCA){
+    } else if(scelta == CERCA) {
       cerca(&p);
-    } else if(scelta != USCITA){
+    } else if(scelta != USCITA) {
       printf("Errore nell'inserimento!\n");
     }
   } while(scelta != USCITA);
@@ -76,30 +85,67 @@ int main(){
   return 0;
 }
 
+/*Funzione Visualizza*/
 void visualizza(percorso_t *p){
   int i;
   printf("\nPercorso:\n");
-  for(i=0; i<p->n_loc; i++)
+  for(i=0; i<p->n_loc; i++){
     printf("%d - %d %d %s\n", i, p->loc[i].x, p->loc[i].y, p->loc[i].nome);
+  }
 }
 
+/*Funzione Inserici*/
+void inserisci(percorso_t *p){
+  int pso;
+  if(p->n_loc<MAXL){
+    printf("\nInserisci Posizione: ");
+    scanf("%d",&pos);
+    if(pos>=0 && pos<p->sn_loc){
+      for(i=p->n_loc-1; i>=pos; i--){
+        p->loc[i+1] = p->loc[i]
+      }
+      pos->n_loc++;
+    }
+  } else {
+    printf("Memoria Finita");
+  }
+}
+
+/*Funzione Cancella*/
+void cancella(percorso_t *p){
+  int pos;
+  printf("specifica indice dell'elemento da cancellare:\n");
+  scanf("%d", &pos);
+  if(pos>=0 && pos<p->n_loc){
+    for(; pos<p->n_loc-1; pos++){
+      p->loc[pos] = p->loc[pos+1];
+    }
+  } else {
+    printf("Indice Errato!");
+  }
+}
+
+/*Funzione Appendi*/
 void appendi(percorso_t *p) {
   if(p->n_loc<MAXL){
     printf("\nInserire i dati della nuova località:\n");
     scanf("%d %d %s", &p->loc[p->n_loc].x, &p->loc[p->n_loc].y, p->loc[p->n_loc].nome);
     p->n_loc++;
-  } else
+  } else {
     printf("\nSpazio esaurito!\n");
+  }
 }
 
+/*Funzione Cerca*/
 void cerca(percorso_t *p) {
   char str[MAXS+1];
   int i;
   printf("\nInserisci il nome da cercare:\n");
   scanf("%s", str);
   printf("Località trovate:\n");
-  for(i=0; i<p->n_loc; i++)
+  for(i=0; i<p->n_loc; i++){
     if(!strcmp(str, p->loc[i].nome)){
       printf("%d - %d %d %s\n", i, p->loc[i].x, p->loc[i].y, p->loc[i].nome);
     }
+  }
 }

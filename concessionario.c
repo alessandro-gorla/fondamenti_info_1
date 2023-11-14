@@ -25,8 +25,8 @@ Conc. 2, codice 23556: gestore Franco Verdi
 Immatricolazioni 2015:
 NESSUNA
 */
-
 #include<stdio.h>
+
 #define DIM_GRUPPO_CONCES 10
 #define MAX_GARAGE 50
 #define DIM_PIVA 30
