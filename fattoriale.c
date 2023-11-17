@@ -9,6 +9,6 @@ int main(){
         f = f * i;
         i = i + 1;
     }
-    printf("%d", f);
+    printf("%d\n", f);
     return 0;
 }
