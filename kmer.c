@@ -89,9 +89,9 @@ int distanza(char seq1[], char seq2[]){
                 d++;
             }
         }
-        if(lunghezza!=0){
-            d += (strlen(seq2)-strlen(seq1)); /*Aggiunge alla distanza la differenza tra la lunghezza della stringa corta e quella lunga*/ 
-        } 
+        /*if(lunghezza!=0){
+            d += (strlen(seq2)-strlen(seq1)); Aggiunge alla distanza la differenza tra la lunghezza della stringa corta e quella lunga
+        } */
     }
     return d;
 }
