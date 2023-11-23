@@ -1,12 +1,5 @@
-#ignora tutto
-*
-#permetti .c
-!*.c
 #file compilazione C
 *.out
-#permetti .md
-!*.md
 #vs code
 *.vscode
-#permetti Cartelle
-!*Lezione_17-11
+
