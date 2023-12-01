@@ -4,13 +4,13 @@ rappresentare una lista concatenata mediante cui memorizzare una
 sequenza di lunghezza indefinita di numeri interi.
 Realizzare i seguenti sottoprogrammi in C nelle versioni sia
 iterativa che ricorsiva.
-- Scrivere un sottoprogramma che riceve una testa di una lista
-dinamica di interi e ne visualizza il contenuto.
-- Scrivere un sottoprogramma che riceve una testa di una lista
-dinamica di interi e ne restituisce la lunghezza.
+* Visualizza*
+
+    *  *
 - Scrivere un sottoprogramma che riceve una testa di una lista
 dinamica di interi ed un intero. Il sottoprogramma restituisce 1 se
 il numero è presente nella lista altrimenti 0.
+    * esiste *
 - Scrivere un sottoprogramma che riceve una testa di una lista
 dinamica di interi ed un intero. Il sottoprogramma restituisce il
 puntatore al primo nodo della lista avente valore pari al numero
@@ -45,9 +45,11 @@ typedef struct nodo_{
 }nodo_t;
 
 /*Visualizza implementata iterativa
+
     Input: lista
     Return void
-    Data una lista in ingresso visualizza su righe diverse ogni elemento della lista dinamica 
+
+    Scrivere un sottoprogramma che riceve una testa di una lista dinamica di interi e ne visualizza il contenuto. 
 */
 void visualizza(nodo_t*);
 
@@ -57,6 +59,13 @@ void visualizza(nodo_t*);
     Data una lista in ingresso visualizza su righe diverse ogni elemento della lista dinamica 
 */
 void visualizzaRicorsiva(nodo_t*);
+
+/*Visualizza implementata Ricosivamente
+    Input: lista
+    Return void
+
+    Scrivere un sottoprogramma che riceve una testa di una lista dinamica di interi e ne restituisce la lunghezza.*/
+int lunghezza_Coda(nodo_t*);
 
 /*Inserimento in testa con Ritorno
     Input: lista
@@ -72,7 +81,6 @@ Inserimento in testa con Ritorno
     Data una lista in ingresso e il numero da aggiungere insersce il numero in un nuovo nodo in testa e  ritorna il puntatore alla testa della stessa
 */
 void inserimentoInTestaDoppioPuntatore(nodo_t**, int);
-
 
 /*
 Ricerca Iterativa di un numero
@@ -97,6 +105,8 @@ nodo_t* distruggi(nodo_t*);
 
 nodo_t* ricerca(nodo_t*)
 
+
+
 int main(){
 
     return 0;
@@ -116,6 +126,10 @@ void visualizzaRicorsiva(nodo_t *h){
     print("%d\n", h->num); /*stampo gli elementi in ordine dal primo all'ultimo */
     visualizzaRicorsiva(h->next);
     /*print("%d\n", h->num);*/ /*stampo gli elementi in ordine dall'ultimo al primo */
+}
+
+int lunghezza_Coda(nodo_t*){
+
 }
 
 nodo_t* inserimentoInTesta(nodo_t *h, int num){
